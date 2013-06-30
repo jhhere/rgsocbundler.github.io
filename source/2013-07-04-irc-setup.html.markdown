@@ -1,0 +1,36 @@
+---
+title: IRC Setup
+date: 2013-07-04
+tags: tools
+---
+
+# IRC Setup
+
+## What is IRC?
+
+Internet Relay Chat (IRC) is a protocol for chat created in 1988. It supports
+group chats in channels, one-to-one communication via private message, and file
+sharing. IRC Clients are available for every major operating system that
+supports Internet access. Millions of people use IRC every day. [Learn more on
+Wikipedia](http://en.wikipedia.org/wiki/Internet_Relay_Chat)
+
+## chat.freenode.net
+
+[freenode](http://freenode.net) is a free and open source software focused IRC
+**network**. The network hosts IRC **channels** where people discuss
+peer-directed projects. freenode is the largest IRC network. The servers are
+all accessible from the domain name
+[chat.freenode.net](irc://chat.freenode.net). Primary on-topic channels begin
+with a single #, e.g. #rgsoc-team is the channel name for RGSoC Teams to
+discuss projects. [Learn more on
+Wikipedia](http://en.wikipedia.org/wiki/Freenode).
+
+## Textual.app
+
+Textual.app is an open source IRC client for OS X. It can be dowloaded via the
+App Store.app or compiled from source. It's $5 on the App Store, it's worth it
+and you're supporting open source!
+
+1. Add Identity
+1. Add Network
+1. Add Channel
