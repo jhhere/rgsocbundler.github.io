@@ -1,6 +1,6 @@
 ---
 title: Hello World
-date: 2013-07-01
+date: 2013-06-30
 tags: goals
 ---
 
