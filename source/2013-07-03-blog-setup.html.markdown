@@ -162,22 +162,42 @@ Include Twitter Bootstrap files in `./source/layout.erb`
     <link href="stylesheets/bootstrap.min.css" rel="stylesheet" />
     <script type="text/javascript" src="javascripts/bootstrap.min.js" />
 
-## [middleman-ghpages](https://github.com/neo/middleman-gh-pages)
+## [middleman-deploy](https://github.com/tvaughan/middleman-deploy)
 
-Middleman-ghpages is just a few unofficial rake tasks that automate the process
-of deploying a Middleman site to Github Pages.
+Middleman-deploy is an unofficial extenstion that helps deploy middleman sites.
+Since we are making an Organization Github Page, Github expects our compiled
+site to be on the `master` branch. Middleman-deploy will take care of that for
+us if we give it a little configuration.
 
 Add dependency to the `Gemfile`.
 
-    gem "middleman-gh-pages"
+    gem "middleman-deploy"
 
 Install.
 
     $ bundle
 
-Require in `Rakefile`.
+Activate deploy in `config.rb` and tell it to deploy to master. If you are not
+creating a user or organization Github page then Github expects the compiled
+site to be on the `gh-pages` branch.
 
-    require "middleman-gh-pages"
+  activate :deploy do |deploy|
+    deploy.method = :git
+    deploy.branch = "master"
+  end
+
+Edit `Rakefile` to add helpful tasks.
+
+    require "middleman"
+
+    task :build do
+      sh "middleman build --clean"
+    end
+
+    task :publish do
+      sh "middleman build --clean"
+      sh "middleman deploy --clean"
+    end
 
 Publish to Github.
 
