@@ -32,15 +32,12 @@ Open your web browser to [http://0.0.0.0:4567](http://0.0.0.0:4567).
 
 Make sure you publish from the `source` branch.
 
-Build.
-
-```bash
-$ rake build
-```
-
-Publish!
+Commit your changes and push them to Github, then publish!
 
 ```
+$ git add .
+$ git commit -m "A very descriptive message"
+$ git push origin source
 $ rake publish
 ```
 
