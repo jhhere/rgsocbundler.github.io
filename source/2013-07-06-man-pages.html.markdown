@@ -1,7 +1,0 @@
----
-title: Man Pages
-date: 2013-07-06
-tags: goals
----
-
-# Man Pages
