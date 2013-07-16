@@ -181,10 +181,10 @@ Activate deploy in `config.rb` and tell it to deploy to master. If you are not
 creating a user or organization Github page then Github expects the compiled
 site to be on the `gh-pages` branch.
 
-  activate :deploy do |deploy|
-    deploy.method = :git
-    deploy.branch = "master"
-  end
+    activate :deploy do |deploy|
+      deploy.method = :git
+      deploy.branch = "master"
+    end
 
 Edit `Rakefile` to add helpful tasks.
 
