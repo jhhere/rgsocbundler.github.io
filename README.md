@@ -8,15 +8,41 @@ Hosted on Github Pages.
 
 ## Installation
 
+Make sure you install from the `source` branch.
+
+```bash
+$ git checkout source
+```
+
+Intall all of the dependencies.
+
 ```bash
 $ bundle
 ```
+
+Start the server.
 
 ```bash
 $ middleman server
 ```
 
-Open your browser to [http://0.0.0.0:4567](http://0.0.0.0:4567).
+Open your web browser to [http://0.0.0.0:4567](http://0.0.0.0:4567).
+
+## Publish
+
+Make sure you publish from the `source` branch.
+
+Build.
+
+```bash
+$ rake build
+```
+
+Publish!
+
+```
+$ rake publish
+```
 
 ## Authors
 
