@@ -23,13 +23,13 @@ Wikipedia](http://en.wikipedia.org/wiki/Internet_Relay_Chat)
 peer-directed projects. freenode is the largest IRC network. The servers are
 all accessible from the domain name
 [chat.freenode.net](irc://chat.freenode.net). Primary on-topic channels begin
-with a single #, e.g. #rgsoc-team is the channel name for RGSoC Teams to
+with a single #, e.g. #rgsoc-teams is the channel name for RGSoC Teams to
 discuss projects. [Learn more on
 Wikipedia](http://en.wikipedia.org/wiki/Freenode).
 
 ### Rooms We're In
 
-- \#rgsoc-team
+- \#rgsoc-teams
 - \#bundler
 
 ## Campfire
