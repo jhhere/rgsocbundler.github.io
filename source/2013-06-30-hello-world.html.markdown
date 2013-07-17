@@ -1,15 +1,22 @@
 ---
 title: Week 1 Day 1 Blogging using Middleman Gem
-date: 2013-7-16
-tags: log 
----
+date: 2013-06-30
+tags: goals
 
-# Week 1 Day 1 Blogging using Middleman Gem
+# Hello World
 
-  + Created our Team Blog on github using Middleman Gem 
-  + Discussed the difference between using a user page and a project page in gitpages
-  + Created a Rakefile with the task 'rake build' and 'rake publish'
-  + Added pages and updated them
 
-## bundle exec rake publish
+Hello, from the Rails Girls Summer of Code Bundler Team! 15 July 2013 marks the start of the summer for our team and we are already so excited.
+
+## Open Source Communication
+
+RGSoC is all about helping women contribute to open source projects. Open source software takes a lot of online communication. To get as much practice as possible we will open source our communication!
+
+All summer we will be posting all of our #tools, #goals, #progress, and #achievements to this blog so others can learn from what we have learned!
+
+Each of our posts will serve as a living document that will be updated when we learn more about a subject. The documents are immutable, but copies can be made.
+
+
+
+
 
