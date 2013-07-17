@@ -5,6 +5,7 @@ tags: log
 ---
 
 # Week 1 Day 1 
+
 ## Blogging using Middleman Gem
 
   + Created our Team Blog on github using Middleman Gem 
@@ -12,5 +13,4 @@ tags: log
   + Created a Rakefile with the task 'rake build' and 'rake publish'
   + Added pages and updated them
 
-#### bundle exec rake publish
-
+**bundle exec rake publish**
