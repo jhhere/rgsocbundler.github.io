@@ -27,6 +27,11 @@ with a single #, e.g. #rgsoc-team is the channel name for RGSoC Teams to
 discuss projects. [Learn more on
 Wikipedia](http://en.wikipedia.org/wiki/Freenode).
 
+### Rooms We're In
+
+- \#rgsoc-team
+- \#bundler
+
 ## Campfire
 
 ### What is Campfire?
@@ -43,3 +48,8 @@ emoji!](http://www.emoji-cheat-sheet.com/)
 
 Bundler core has a chat room and now RGSoCBundler has one too! These rooms are
 private.
+
+### Rooms We're In
+
+- Bundler Chats
+- RailsGirls SoC
