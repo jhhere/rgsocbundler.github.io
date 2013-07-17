@@ -1,10 +1,10 @@
 ---
-title: Week 1 Day 1 Blogging using Middleman Gem
+title: Hello World
 date: 2013-06-30
 tags: goals
+---
 
 # Hello World
-
 
 Hello, from the Rails Girls Summer of Code Bundler Team! 15 July 2013 marks the start of the summer for our team and we are already so excited.
 
