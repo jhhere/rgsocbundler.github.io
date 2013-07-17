@@ -1,0 +1,45 @@
+---
+title: Chat
+date: 2013-07-17
+tags: tools
+---
+
+# Chat
+
+## IRC
+
+### What is IRC?
+
+Internet Relay Chat (IRC) is a protocol for chat created in 1988. It supports
+group chats in channels, one-to-one communication via private message, and file
+sharing. IRC Clients are available for every major operating system that
+supports Internet access. Millions of people use IRC every day. [Learn more on
+Wikipedia](http://en.wikipedia.org/wiki/Internet_Relay_Chat)
+
+### chat.freenode.net
+
+[freenode](http://freenode.net) is a free and open source software focused IRC
+**network**. The network hosts IRC **channels** where people discuss
+peer-directed projects. freenode is the largest IRC network. The servers are
+all accessible from the domain name
+[chat.freenode.net](irc://chat.freenode.net). Primary on-topic channels begin
+with a single #, e.g. #rgsoc-team is the channel name for RGSoC Teams to
+discuss projects. [Learn more on
+Wikipedia](http://en.wikipedia.org/wiki/Freenode).
+
+## Campfire
+
+### What is Campfire?
+
+[Campfire](http://campfirenow.com/) is like instant messaging, but designed
+exclusively for groups. Share text, files, and code in real time. Save
+transcripts so you don’t forget. You can use Campfire in your web browser or
+[download a desktop application](http://campfirenow.com/extras).
+
+What's the best part about Campfire? [It supports
+emoji!](http://www.emoji-cheat-sheet.com/)
+
+### Bundler Campfire
+
+Bundler core has a chat room and now RGSoCBundler has one too! These rooms are
+private.
