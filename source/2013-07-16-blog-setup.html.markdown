@@ -1,6 +1,6 @@
 ---
 title: Blog Setup
-date: 2013-07-03
+date: 2013-07-16
 tags: tools
 ---
 
@@ -153,9 +153,9 @@ Add `.gitignore`
 Add Twitter Bootstrap files. First, [download
 it](http://twitter.github.io/bootstrap/) and unzip it.
 
-    $ mv ~/Downloads/bootstrap/css/*.min.css ./source/stylesheets
-    $ mv ~/Downloads/bootstrap/img/* ./source/images
-    $ mv ~/Downloads/bootstrap/js/*.min.js ./source/javascripts
+    $ cp ~/Downloads/bootstrap/css/*.min.css ./source/stylesheets
+    $ cp ~/Downloads/bootstrap/img/* ./source/images
+    $ cp ~/Downloads/bootstrap/js/*.min.js ./source/javascripts
 
 Include Twitter Bootstrap files in `./source/layout.erb`
 

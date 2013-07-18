@@ -1,0 +1,16 @@
+---
+title: Week 1 Day 1 Blogging using Middleman Gem
+date: 2013-7-16
+tags: log 
+---
+
+# Week 1 Day 1 
+
+## Blogging using Middleman Gem
+
+  + Created our Team Blog on github using Middleman Gem 
+  + Discussed the difference between using a user page and a project page in gitpages
+  + Created a Rakefile with the task 'rake build' and 'rake publish'
+  + Added pages and updated them
+
+**bundle exec rake publish**
