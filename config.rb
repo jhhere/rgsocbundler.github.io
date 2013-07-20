@@ -2,7 +2,7 @@
 # Blog settings
 ###
 
-# Time.zone = "UTC"
+Time.zone = "America/Los_Angeles"
 
 activate :blog do |blog|
   # blog.prefix = "blog"
@@ -15,7 +15,7 @@ activate :blog do |blog|
   # blog.year_link = ":year.html"
   # blog.month_link = ":year/:month.html"
   # blog.day_link = ":year/:month/:day.html"
-  # blog.default_extension = ".markdown"
+  blog.default_extension = ".markdown.erb"
 
   blog.tag_template = "tag.html"
   blog.calendar_template = "calendar.html"
