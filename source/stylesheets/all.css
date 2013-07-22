@@ -15,3 +15,50 @@ body {
     padding-right: 5px;
   }
 }
+
+.btn-jdblog:hover,
+.btn-jdblog:focus,
+.btn-jdblog:active{
+  background-color: #6fc;
+}
+
+.btn-jdpage:hover,
+.btn-jdpage:focus,
+.btn-jdpage:active {
+  background-color: #6f3;
+}
+
+
+.btn-jdlinks:hover,
+.btn-jdlinks:focus,
+.btn-jdlinks:active {
+  background-color: #6f3;
+}
+
+.btn-jdreadmore:hover,
+.btn-jdreadmore:focus,
+.btn-jdreadmore:active {
+  background-color: #6f3;
+}
+
+.btn-jhreadmore:hover,
+.btn-jhreadmore:focus,
+.btn-jhreadmore:active {
+  background-color: #09f;
+}
+
+
+.btn-jlsreadmore:hover,
+.btn-jlsreadmore:focus,
+.btn-jlsreadmore:active {
+  background-color: #c3f;
+}
+
+.btn-aareadmore:hover,
+.btn-aareadmore:focus,
+.btn-aareadmore:active {
+  background-color: #f69;
+  border: 2px solid #000;:w
+
+  border-color: #f69;
+}
