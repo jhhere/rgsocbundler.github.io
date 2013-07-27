@@ -1,0 +1,55 @@
+---
+title: Week 2 Day 7 RSpec
+date: 2013-07-24 17:23 PDT
+tags: log
+---
+# Week 2 Day 7
+
+## RSpec
+
+### What We Did and Learned
+We continued by reading the [RSpec Expectations](https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers/raise-error-matcher) for syntax and writing a test to fail when typing `bundle i` it should not raise an error. However, neither of us could get our test to fail, which is what we want.
+
+We also did not know what and where `Bundler.ui.error` does. We learned how to quickly search for code in files by either using the tool ack or using the commandline [grep](http://www.cyberciti.biz/faq/howto-use-grep-command-in-linux-unix/).
+
+`grep -r "def ui" .`
+
+-r is short for recursive. This searches within the current directory and all directories within it with the words "def ui."
+
+Jessica explained recursion. It is called recursion because it calls itself. One calls one and the return is the basecase.
+
+    def one(any_int)
+      return any_int if any_int == 1
+      one(any_int - 1)
+    end
+
+
+
+We also learned that in Ruby convention, the name of the Class is the filename. Classes are `CamelCaps` and files are `snake_case`. Example: Class UI would have a file called ui.rb
+
+Our coach, Jessica, poked around the specs in Bundler and found the Bundler test is handled differently. She directed us to how our test should look like. After implementing the correct test, we got our test to fail and we are working on getting it to pass.
+
+    require 'spec_helper'
+
+    describe "Argument Error when typing bundle i" do
+      it "should not raise error" do
+        bundle "i"
+        expect(err).to be_empty
+      end
+    end
+
+<br />
+
+    Failures:
+
+    1) Argument Error when typing bundle i should not raise error
+      Failure/Error: expect(err).to be_empty
+       expected empty? to return true, got false
+     # ./spec/bundle_i_spec.rb:6:in `block (2 levels) in <top (required)>'
+
+    Finished in 2.02 seconds
+    1 example, 1 failure
+
+    Failed examples:
+
+    rspec ./spec/bundle_i_spec.rb:4 # Argument Error when typing bundle i should not raise error

@@ -9,19 +9,20 @@ tags: log
 
 ### What We Did
 
-* **We are still trying to get out first Bundler pull request merged.**
++ **We are still trying to get out first Bundler pull request merged.**
 We stripped down the "Bundler for Development" section on the Bundler Contribute Page. We added the entirety of it on our Team Bundler Website in the Cheatsheet section and on the Rails Girls Guides
 
-* Struggled with unwanted white space. Joyce used travis-ci.org and I modified my .gvimrc
++ Struggled with unwanted white space. Joyce used travis-ci.org and I modified my .gvimrc
 
-* Read about exceptions in the Pragmatic Programmers' Guide / Pickaxe.
++ Read about exceptions in the Pragmatic Programmers' Guide / Pickaxe.
 
-* **We started to work on our first issue in Bundler.** We are trying to figure out the errors caused when you try to do the bundle i command. Which gives you a stack trace instead of an error. We realized the the class is ArgumentError and that it doesn't understand whether you want to  bundle init bundle inject or bundle install. We worked in the friendly_errors file and tried to figure out how to raise the right exception. We also created an rspec test for it. We will be continuing to work on this tomorrow.
++ **We started to work on our first issue in Bundler.** We are trying to figure out the errors caused when you try to do the bundle i command. Which gives you a stack trace instead of an error. We realized the the class is ArgumentError and that it doesn't understand whether you want to  bundle init bundle inject or bundle install. We worked in the friendly_errors file and tried to figure out how to raise the right exception. We also created an rspec test for it. We will be continuing to work on this tomorrow.
 
 ### What we Learned from our Boo Boo’s?
 
-* Amending Commit Messages Caused Push Rejection
++ Amending Commit Messages Caused Push Rejection
 Joyce pushed a commit and then wanted to change the commit message 
+
 This caused a push rejection.
 
    <pre> To https://github.com/joyicecloud/rgsocbundler.github.io.git
@@ -30,4 +31,7 @@ This caused a push rejection.
 
     Amending a commit that you already pushed creates a new commit. If you check the commit SHA, the numbers are different.That means you will need to force push because it rewrites the commit history.
 
-    It is best to avoid amending commits that you have already pushed. **Make amends before pushing the commit.**
+    It is best to avoid amending commits that you ha
+
++ Before buying broth read the package to see if it is chicken broth or vegetable broth. The packages are practically identical. :)
+
