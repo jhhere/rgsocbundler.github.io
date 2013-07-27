@@ -3,11 +3,12 @@ title: Week 2 Day 8 Bash
 date: 2013-07-25 17:23 PDT
 tags: log
 ---
+
 # Week 2 Day 8
 
 ## Bash
 
-### Reproduce the "bundle i" error for the Bundler Repo
+### Reproduce the **bundle i** error for the Bundler Repo
 
 #### Our Quandary
 
@@ -19,29 +20,27 @@ For other rubygems, we would use bundler and specify in the gemfile. Then run, b
 
 #### Our Solution
 
-To use our cloned bundler on the commandline, our mentor, Andre Arko, said “back in the dark pre-bundler ages you always had to do this: ruby -I/path/to/gem/lib -S /path/to/gem/bin/foo.”
-The `-I` tells Ruby where to load the library scripts. (Looked up -I in `man ruby`)
-We created an alias named dbundle in our bash profile. (.bashrc or .bash_profile). It is a hidden file in your home directory. Sooo, you have to run `ls -a` to see it.
+To use our cloned bundler on the commandline, our mentor, Andre Arko, said “back in the dark pre-bundler ages you always had to do this: ruby -I/path/to/gem/lib -S /path/to/gem/bin/foo.”  
+The `-I` tells Ruby where to load the library scripts. (Looked up -I in `man ruby`)  
+We created an alias named dbundle in our bash profile. (.bashrc or .bash_profile). It is a hidden file in your home directory. Sooo, you have to run `ls -a` to see it.  
 alias dbundle='ruby -I ~/sw/gems/bundler/lib ~/sw/gems/bundler/bin/bundle'
 This way we only have to type in dbundle rather than that long line every single time.
 
-1. Put this into you .bashrc file 
+1. Put this into you .bashrc file (Make sure you have the right path to your file.)
 
-    `alias dbundle='ruby -I ~/Desktop/railsgirls/bundler/lib ~/Desktop/railsgirls/bundler/bin/bundle'`
-
-   Make sure you have the right path to your file.
+        alias dbundle='ruby -I ~/Desktop/railsgirls/bundler/lib ~/Desktop/railsgirls/bundler/bin/bundle'
 
    You can locate the .bashrc file by running:
 
-    `$ ls -a`
+        $ ls -a
 
-2. Run this in any directory with a Gemfile
+2. Now you can run this command in any directory with a Gemfile
 
-    `$ ruby -I ~/Desktop/railsgirls/bundler/lib ~/Desktop/railsgirls/bundler/bin/bundle`
+        $ dbundle i
 
 ### Our Struggles
 
-Setting up the alias we got `Bundler::GemfileNotFound`
+Setting up the alias we got Bundler::GemfileNotFound
 In order for our alias to work, we have to run dbundle inside a directory that has a Gemfile. For example, our rgsocbundler.git.io blog has a Gemfile. We can run dbundle inside that directory. Now run `dbundle` inside our rgsocbundler directory and wahlah! It works. And if run `dbundle i`, it reproduces the error (stacktrace).
 
 ### Notes:
@@ -62,4 +61,4 @@ In order for our alias to work, we have to run dbundle inside a directory that h
 
 ## Other Stuff We Did
 
-Based on the comments, we made changes and fixes to our pull requests that were submitted the day before. 
+Based on the comments, we made changes and fixes to our pull requests that were submitted.
