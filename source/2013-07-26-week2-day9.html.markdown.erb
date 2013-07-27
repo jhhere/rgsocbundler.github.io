@@ -1,0 +1,35 @@
+---
+title: Week 2 Day 9 Testing Testing 1, 2, 3
+date: 2013-07-26 18:41 PDT
+tags: log
+---
+
+# Week 2 Day 9
+
+## Testing Testing 1, 2, 3
+
+To easily make comments on our progress, we sent pull requests to our coach’s Bundler repo on Github containing our new code and test spec.
+
+### Pass The 1st Test
+The goal was to get our first test to pass, which was to get an empty field when we run `dbundle i` rather than a stacktrace.
+
+We read articles on [Ruby Exceptions](http://rubylearning.com/satishtalim/ruby_exceptions.html) and [The Perils of rescue Exception](http://www.mikeperham.com/2012/03/03/the-perils-of-rescue-exception/). We spent the day figuring out the importance of the Ruby exception hierarchy and that the order of the exception within the file also mattered.
+
+The first step was to use the correct Exception class. Our stacktrace displayed the error as an ArgumentError, which is a descendent of Exception. We need to be more specific of what error we are capturing because if we use `rescue Exception` or `rescue StandardError`, it will potentially catch other errors.
+
+![Ruby exception hierarchy](/images/bundler/ruby-exception-hierarchy.jpg)
+
+If the rescue code gets added to the bottom of the file, the test will not pass. We have to add it above the other rescue's. The order/hierarchy matters.
+
+![First Test of Friendly Errors](/images/bundler/First-Test-Friendly-Error.png)
+
+To manually see that it works, we type in `dbundle i` in our rgsocbundler directory and wahlah. Nothing gets displayed. Before, when we ran `dbundle i`, we got a stacktrace.
+
+### Pass the Second Test
+The next step, we created our second test to print out a message. When we type `dbundle i`, we want it to print out a message.
+
+We used [this file](https://github.com/bundler/bundler/blob/master/spec/update/gems_spec.rb#L147-L152) for reference on the variables used for the error and output and rspec syntax (the correct term is [matcher](https://www.relishapp.com/rspec/rspec-expectations/v/2-14/docs/built-in-matchers)).
+
+### More Learning
+We just wrote some Integration Tests. Now we started reading what are Integration Tests and Unit Tests and what is the difference between the two of them?
+
