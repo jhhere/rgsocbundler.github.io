@@ -1,0 +1,64 @@
+---
+title: Week 2 Day 8 Bash
+date: 2013-07-25 17:23 PDT
+tags: log
+---
+
+# Week 2 Day 8
+
+## Bash
+
+### Reproduce the **bundle i** error for the Bundler Repo
+
+#### Our Quandary
+
+How are we to reproduce the `bundle i` error for the Bundler repo we cloned.
+
+How would we be able to see if it fixed the error (instead of stacktrace, it displays a friendly error message) when we type bundle i?
+
+For other rubygems, we would use bundler and specify in the gemfile. Then run, bundle install or bundle install gemname.
+
+#### Our Solution
+
+To use our cloned bundler on the commandline, our mentor, Andre Arko, said “back in the dark pre-bundler ages you always had to do this: ruby -I/path/to/gem/lib -S /path/to/gem/bin/foo.”  
+The `-I` tells Ruby where to load the library scripts. (Looked up -I in `man ruby`)  
+We created an alias named dbundle in our bash profile. (.bashrc or .bash_profile). It is a hidden file in your home directory. Sooo, you have to run `ls -a` to see it.  
+alias dbundle='ruby -I ~/sw/gems/bundler/lib ~/sw/gems/bundler/bin/bundle'
+This way we only have to type in dbundle rather than that long line every single time.
+
+1. Put this into you .bashrc file (Make sure you have the right path to your file.)
+
+        alias dbundle='ruby -I ~/Desktop/railsgirls/bundler/lib ~/Desktop/railsgirls/bundler/bin/bundle'
+
+   You can locate the .bashrc file by running:
+
+        $ ls -a
+
+2. Now you can run this command in any directory with a Gemfile
+
+        $ dbundle i
+
+### Our Struggles
+
+Setting up the alias we got Bundler::GemfileNotFound
+In order for our alias to work, we have to run dbundle inside a directory that has a Gemfile. For example, our rgsocbundler.git.io blog has a Gemfile. We can run dbundle inside that directory. Now run `dbundle` inside our rgsocbundler directory and wahlah! It works. And if run `dbundle i`, it reproduces the error (stacktrace).
+
+### Notes:
+
++ **source ~/.bashrc** - reloads the bash file
+
+**-I directory** Used to tell Ruby where to load the library scripts.
+    Directory path will be added to the load-path variable
+    ($:).
+
+**-S** Makes Ruby use the PATH environment variable to search for script,unless if its name begins with a slash.  This is used to emulate #! on machines that don't support it, in the following manner:
+
+    #! /usr/local/bin/ruby
+    # This line makes the next one a comment in Ruby \
+    exec /usr/local/bin/ruby -S $0 $*
+
++  **git remote -v** will display your remote and origin paths
+
+## Other Stuff We Did
+
+Based on the comments, we made changes and fixes to our pull requests that were submitted.
