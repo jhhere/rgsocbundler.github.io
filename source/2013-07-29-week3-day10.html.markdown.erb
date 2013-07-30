@@ -1,0 +1,35 @@
+---
+title: Week3 Day10
+date: 2013-07-29 18:30 PDT
+tags:
+---
+# Week 3 Day 10
+
+## Unit Tests vs. Integrations Tests
+
+### Unit Tests
+>> A unit test is a test written by the programmer to verify that a relatively small piece of code is doing what it is intended to do. They are narrow in scope, they should be easy to write and execute, and their effectiveness depends on what the programmer considers to be useful. The tests are intended for the use of the programmer, they are not directly useful to anybody else, though, if they do their job, testers and users downstream should benefit from seeing less bugs. -[Nathan Hughes](http://stackoverflow.com/questions/5357601/whats-the-difference-between-unit-tests-and-integration-tests)
+
+### Integration Tests
+>> An integration test is done to demonstrate that different pieces of the system work together. Integration tests cover whole applications, and they require much more effort to put together. They usually require resources like database instances and hardware to be allocated for them. The integration tests do a more convincing job of demonstrating the system works (especially to non-programmers) than a set of unit tests can, at least to the extent the integration test environment resembles production.  
+Actually "integration test" gets used for a wide variety of things, from full-on system tests against an environment made to resemble production to any test that uses a resource (like a database or queue) that isn't mocked out.
+
+We created a Unit Test. `spec/bundler/friendly_errors_spec.rb`
+    
+    require "spec_helper"
+    require "bundler/friendly_errors"
+
+    describe "friendly error" do
+      it "rescues Argument Errors" do
+       expect { Bundler.with_friendly_errors{ raise ArgumentError } }.not_to raise_error()
+      end
+    end
+
+## DIY Gem
+We created our own Lorem Ipsum Generator Gem with the help of this RailsCast 
+[#245 New Gem with Bundler](http://railscasts.com/episodes/245-new-gem-with-bundler)
+
+### [More Bash Aliases](http://www.techrepublic.com/blog/10-things/cut-down-on-linux-command-line-typing-with-these-10-handy-bash-aliases/)
+
+Jen changed her .bashrc to have shortcuts to sign into the Bundler and Rails Girls files. Now she can use "rg" instead of "cd Desktop/railsgirls/rgsocbundler.github.io/" and "bu" instead of "cd /Desktop/railsgirls/bundler". Way shorter!
+
