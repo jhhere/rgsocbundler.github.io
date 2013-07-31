@@ -20,8 +20,6 @@ Today, we added Thor to our gem to build a command-line interface by reading [Wh
 
 For example, we would be creating a command to run our gem like `rails new` would create a Rails app or running `bundle install` would install the rubygems you need to run your app.
 
-### What We Learned from our Boo Boo’s?
-
 #### How to Run Your Unpublished Gem
 According to Andre Arko, there are 3 ways to run it.
 
@@ -31,6 +29,8 @@ According to Andre Arko, there are 3 ways to run it.
 
 + `bundle exec gem_command_name`
 
-Initially, Joyce couldn't get `bundle exec bin/yourgemname` to work because the `bin/gem_command_name` file was missing the shebang `#!/usr/bin/env ruby` at the very top of the file.
+### What We Learned from our Boo Boo’s?
+
+Initially, Joyce couldn't get `bundle exec bin/gem_command_name` to work because the `bin/gem_command_name` file was missing the shebang `#!/usr/bin/env ruby` at the very top of the file.
 
 For the last command, we couldn't get `bundle excec gem_command_name` to work and we don't know why.
