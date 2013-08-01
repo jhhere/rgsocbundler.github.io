@@ -1,0 +1,55 @@
+### Adding CLI to Your Gem using Thor
+Our example gem is called lorem. Replace lorem with your gem directory name accordingly.
+
+**1. Go into your Gem directory**
+
+`cd lorem`
+
+**2. Create the cli.rb in `lib/lorem`**
+
+`touch lib/lorem/cli.rb`
+
+**3. In the cli.rb file, create a class that inherits from Thor**
+
+    require "thor"
+
+    class CLI < Thor
+      desc "ipsum", "Lorem text generator"
+      def ipsum
+        puts "Lorem Ipsum blah blah blah"
+      end
+    end
+
+Read more about this on the Thor website [http://whatisthor.com/](http://whatisthor.com/)
+
+**4. Create bin folder**
+
+`mkdir bin`
+
+**5. Create executable file naming it your gem command**
+
+`touch bin/lorem`
+
+**6. Add this into your `bin/lorem` file**
+
+    #!/usr/bin/env ruby
+    require 'lorem/cli'
+
+    CLI.start
+
+**7. In lorem.gemspec, add this before `end`**
+
+    spec.add_runtime_dependency "thor"
+
+### How to Run Your Unpublished Gem
+There are 3 possible ways to run it.
+
++ `ruby -I lib bin/gem_command_name`
+
++ `bundle exec bin/gem_command_name`
+
+    If you get a `bundler: not executable: bin/gem_command_name` error, run `chmod +x bin/gem_command_name`
+
++ `bundle exec gem_command_name`
+
+    We currently haven't figured out why the last command doesn't work.

@@ -1,0 +1,36 @@
+---
+title: Week 3 Day 11 It's Hammertime
+date: 2013-07-30 17:21 PDT
+tags: log
+---
+
+# Week 3 Day 11
+
+## It's Hammertime
+We are talking about the Rubygem [Thor](http://whatisthor.com/), of course.
+
+### What We Did
+Thor is a [RubyGem](http://rubygems.org/gems/thor) that is used to replace rake, sake, and rubigen. However, that is not how Bundler uses it.
+
+We focused on the Command Line Interface (CLI) aspect of Thor.
+
+Yesterday, we created a new gem by following the now dated [RailsCast](http://railscasts.com/episodes/245-new-gem-with-bundler)
+
+Today, we added Thor to our gem to build a command-line interface by reading [What is Thor](http://whatisthor.com/) and [Building your tools with Thor](http://blog.paracode.com/2012/05/17/building-your-tools-with-thor/)
+
+For example, we would be creating a command to run our gem like `rails new` would create a Rails app or running `bundle install` would install the rubygems you need to run your app.
+
+#### How to Run Your Unpublished Gem
+According to Andre Arko, there are 3 ways to run it.
+
++ `ruby -I lib bin/gem_command_name`
+
++ `bundle exec bin/gem_command_name`
+
++ `bundle exec gem_command_name`
+
+### What We Learned from our Boo Boo’s?
+
+Initially, Joyce couldn't get `bundle exec bin/gem_command_name` to work because the `bin/gem_command_name` file was missing the shebang `#!/usr/bin/env ruby` at the very top of the file.
+
+For the last command, we couldn't get `bundle excec gem_command_name` to work and we don't know why.
