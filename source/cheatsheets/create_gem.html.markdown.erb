@@ -1,0 +1,71 @@
+## Creating your own Gem
+
+1. Run this command in your Terminal. This creates and names all the files you need for your gem. We are going to create a Lorem Ipsum Generator; you can call it whatever you want but seeing as we are creating a [Lorem Ipsum](http://en.wikipedia.org/wiki/Lorem_ipsum) generator we'll call it lorem. [Read about gem naming conventions.](http://guides.rubygems.org/patterns/) 
+    
+        $ bundle gem lorem
+    
+    Notice that this command also initialized a git repository for you on your local machine and gives you the path name for it.  
+        
+2. cd into lorem. Make your `lorem.gemspec` file look like this. Add your name and your email. [Read more about the gemspec file.](http://docs.rubygems.org/read/chapter/20) 
+
+        \# coding: utf-8
+        lib = File.expand_path('../lib', __FILE__)
+        $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+        require 'lorem/version'
+    
+        Gem::Specification.new do |spec|
+            spec.name          = "lorem"
+            spec.version       = Lorem::VERSION
+            spec.platform      = Gem::Platform::RUBY
+            spec.authors       = ["your name"]
+            spec.email         = ["your@email.com"]
+            spec.homepage      = ""
+            spec.summary       = %q{Jenipsum generator}
+            spec.description   = %q{Generates jenipsum text}
+            spec.license       = "MIT"
+
+            spec.add_development_dependency "bundler", "~> 1.3"
+            spec.add_development_dependency "rake"
+
+            spec.files         = `git ls-files`.split($/)
+            spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+            spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+            spec.require_paths = ["lib"]
+
+        end
+
+    If you neglect to change these areas you will get this error when you go to run $ gem build lipsum.gemspec 
+
+        ERROR:  While executing gem ... (Gem::InvalidSpecificationException) "FIXME" or "TODO" is not a description
+
+
+3. Open your file `lib/lipsum.rb` Make it look like this. This is the file that is loaded when people require your gem. You can customize it with the behavior you want it to have.
+
+        require "lipsum/version"
+        
+        module Lipsum
+            def self.ipsum
+                "Lorem ipsum bespoke flexitarian bitters, non next level consequat stumptown  
+                pork belly selfies sartorial. Laborum vegan excepteur ad, hashtag id non.  
+                Eiusmod Tonx squid intelligentsia biodiesel art party YOLO bicycle rights  
+                fashion axe, +1 roof party non quis do. Trust fund nesciunt odio, mustache  
+                Terry Richardson Odd Future vinyl thundercats kogi placeat cliche put a bird  
+                on it aliquip lo-fi. Pickled hashtag bitters american apparel fanny pack tempor.  
+                Accusamus pork belly do Williamsburg nihil, salvia eiusmod tattooed excepteur  
+                in street art. Meggings Tonx forage occaecat magna tote bag."
+            end
+        end
+
+4. Run this command.
+
+        $ gem build lipsum.gemspec
+        
+### Congratulations, you have created a gem. 
+
+### [Now you can add Thor.](http://rgsocbundler.github.io/cheatsheets/adding-cli-to-a-gem-using-thor.html)   
+
+**Here are some good resources if you have questions.**  
+[Video tutorial that will explain all the files and file structure.](http://railscasts.com/episodes/245-new-gem-with-bundler)  
+[This is Bundler's Tutorial](http://bundler.io/v1.3/rubygems.html)  
+[RubyGems Guides](http://guides.rubygems.org/make-your-own-gem/)
+
