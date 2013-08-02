@@ -1,0 +1,31 @@
+---
+title: Week 3 Day 13 Namespace n Rspec
+date: 2013-08-02 11:28 PDT
+tags: log
+---
+
+# Week 3 Day 11
+
+## Namespace n Rspec
+
+### What We Did
+We fixed our gem to have namespace in the `lib/loremz/cli.rb`. Namespace is where the class CLI is encapsulated by module Loremz. The syntax for namespacing is `Loremz::CLI`
+
+    module Loremz
+      class CLI < Thor
+        #your methods
+      end
+    end
+
+That way our `lib/loremz/cli.rb` file matches with the `lib/loremz.rb`
+
+**Why do we want our `lib/loremz/cli.rb` and `lib/loremz.rb` file to match?**
+
+The `lib/loremz/cli.rb` file is just for handling what comes in the command line. While the content would be stored in the `lib/loremz.rb`
+
+We use `lib/loremz/cli.rb` to call `lib/loremz.rb`
+
+Today we also worked on writing RSpec tests for the gem we created.
+
+### What We Learned from our Boo Boo’s?
+Joyce's ipsum command didn't work because the `require "loremz"` in `lib/loremz/cli.rb` was left out. We need to include it to load the file `lib/loremz.rb`
