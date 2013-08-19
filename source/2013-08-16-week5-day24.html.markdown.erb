@@ -9,6 +9,7 @@ tags: log
 ## What's Up Doc?
 
 ### Jen's Friday
+I worked on breaking apart the Rationale Page to create a FAQ page. I created a new Get Started page and I created a new Bug report page.
 
 ### Joyce's Friday
 
@@ -24,8 +25,10 @@ I learned that the [Bundler html man pages](http://bundler.io/v1.3/man/bundle.1.
 
     ronn --html man/bundle.ronn
 
-However, a rakefile was created so if we run `rake man`, it goes and gets it from the bundler repo and makes the man directory and html pages in our bundler-site repo.
+However, a rakefile was created so if we run `rake man`, it goes and runs the above command and moves the generated html man pages in the bunder repo into the man directory in our bundler-site repo.
 
-I noticed that the bundler-site repo doesn't have a man directory and wondered where the pages were being pulled from. I initially thought the Bundler website was being generated from the bundler-site repo, but with Andre's explanation, it actually is on the gh-pages branch in the bundler repo. We are actually making edits/changes on the bunder-site repo, which then goes to bundler repo on the gh-pages branch where the website is served from. The above steps and creation of the man pages are accomplished with code in the [Rakefile](https://github.com/bundler/bundler-site/blob/master/Rakefile) where if we run `rake release` on the command line, it means the release task will run update_vendor, then build, then man, then release.
+I noticed that the bundler-site repo doesn't have a man directory and wondered where the Bundler html man pages were being pulled from. I initially thought the Bundler website was being generated from the bundler-site repo, but with Andre's explanation, it actually is on the gh-pages branch in the bundler repo. We are actually making edits/changes on the bunder-site repo, which then goes to bundler repo on the gh-pages branch where the website is served from. The above steps and creation of the man pages are accomplished with code in the [Rakefile](https://github.com/bundler/bundler-site/blob/master/Rakefile) where if we run `rake release` on the command line, it means the release task will run update_vendor, then build, then man, then release.
 
 It is similar to how our [rgsocbundler.github.io](http://rgsocbundler.github.io) website is setup, except it is only on one repo. The website gets edited on the source branch and then `rake publish` to go live on the master branch.
+
+[How we are allowed to host a website on github.](https://help.github.com/articles/user-organization-and-project-pages)
