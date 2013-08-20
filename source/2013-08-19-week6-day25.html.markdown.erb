@@ -1,0 +1,59 @@
+---
+title: Week 6 Day 25 Monday Merge
+date: 2013-08-19 18:43 PDT
+tags:
+---
+
+# Week 6 Day 25
+
+## Monday Merge
+
+### Jen's Monday
+
+#### Get Started Page
+
+Today I consolidated the instructions in the http://bundler.io/v1.3/rationale.html, the "Get started-installing Bundler" directions and the "Simple work Flow" directions. They all repeated but with a few extra tidbits of info. Andre gave me the go ahead to do this on Friday.
+I also added the link to the sidebar and added a bit of css styling.
+I shortened the index page and added links to the Get Started page.
+
+I was having problems doing a git push origin master I kept getting the error:
+error: failed to push some refs to 'https://github.com/jendiamond/bundler-site.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+So I checked out git push --help
+NOTE ABOUT FAST-FORWARDS
+       When an update changes a branch (or more in general, a ref) that used
+       to point at commit A to point at another commit B, it is called a
+       fast-forward update if and only if B is a descendant of A.
+
+Even though I re-created my branch from the master branch where I had pulled down the new sidebar updates git was not liking the differences between my last commit on the getstarted branch. 
+
+I did a git fetch --all then git push -f origin  This updated all my files correctly.
+
+#### FAQ Page
+
+I re-styled the FAQ page and added a link to the side bar. It is ready to be merged.
+
+### Joyce's Monday
+
+Yay! The sidebar got merged and deployed on the bundler.io website!
+
+Before the sidebar was merged, minor finishing touches were made. I removed extra whitespace and it was also easier to remove the aside html tag because it was not really necessary and we would have to add a shim to implement html5 for older browsers that don’t support it. All that wasn’t worth it for one tag. But, it can be added in the future. The sidebar is a great starting point ready for use and for additional improvements now.
+
+After deployment though, I realized the sidebar shows up for all versions of the bundler documentation website. That isn’t ideal when the sidebar contains links to version 1.3 of bundler and if you are browsing about version 1.2 of bundler. I made the sidebar only display for version 1.3 of bundler.
+
+The update for having the sidebar only for v1.3 was merged!
+
+Because the What’s New page header links has duplicate code, I changed it to use partials.
+
+Also learned we can automatically close an issue, if we type “Fixes #57” in the PR(Pull Request) comments. https://github.com/blog/1506-closing-issues-via-pull-requests
+
+Learned about git squashing, where if you have a bunch of little commit messages to get rid of all that clutter. Combine it into 1 or fewer commits. 
+
++ [http://blog.steveklabnik.com/posts/2012-11-08-how-to-squash-commits-in-a-github-pull-request](http://blog.steveklabnik.com/posts/2012-11-08-how-to-squash-commits-in-a-github-pull-request) 
+
++ [http://git-scm.com/book/en/Git-Tools-Rewriting-History](http://git-scm.com/book/en/Git-Tools-Rewriting-History)
+
