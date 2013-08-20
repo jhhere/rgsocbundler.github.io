@@ -25,7 +25,7 @@ I learned that the [Bundler html man pages](http://bundler.io/v1.3/man/bundle.1.
 
     ronn --html man/bundle.ronn
 
-However, a rakefile was created so if we run `rake man`, it goes and runs the above command and moves the generated html man pages in the bunder repo into the man directory in our bundler-site repo.
+However, a rakefile was created so if we run `rake man`, it goes and runs the above command. Then, moves the generated html man pages in the bundler repo into the man directory in our bundler-site repo.
 
 I noticed that the bundler-site repo doesn't have a man directory and wondered where the Bundler html man pages were being pulled from. I initially thought the Bundler website was being generated from the bundler-site repo, but with Andre's explanation, it actually is on the gh-pages branch in the bundler repo. We are actually making edits/changes on the bunder-site repo, which then goes to bundler repo on the gh-pages branch where the website is served from. The above steps and creation of the man pages are accomplished with code in the [Rakefile](https://github.com/bundler/bundler-site/blob/master/Rakefile) where if we run `rake release` on the command line, it means the release task will run update_vendor, then build, then man, then release.
 
