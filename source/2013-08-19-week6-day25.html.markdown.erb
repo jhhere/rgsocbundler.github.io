@@ -39,3 +39,21 @@ I re-styled the FAQ page and added a link to the side bar. It is ready to be mer
 
 ### Joyce's Monday
 
+Yay! The sidebar got merged and deployed on the bundler.io website!
+
+Before the sidebar was merged, minor finishing touches were made. I removed extra whitespace and it was also easier to remove the aside html tag because it was not really necessary and we would have to add a shim to implement html5 for older browsers that don’t support it. All that wasn’t worth it for one tag. But, it can be added in the future. The sidebar is a great starting point ready for use and for additional improvements now.
+
+After deployment though, I realized the sidebar shows up for all versions of the bundler documentation website. That isn’t ideal when the sidebar contains links to version 1.3 of bundler and if you are browsing about version 1.2 of bundler. I made the sidebar only display for version 1.3 of bundler.
+
+The update for having the sidebar only for v1.3 was merged!
+
+Because the What’s New page header links has duplicate code, I changed it to use partials.
+
+Also learned we can automatically close an issue, if we type “Fixes #57” in the PR(Pull Request) comments. https://github.com/blog/1506-closing-issues-via-pull-requests
+
+Learned about git squashing, where if you have a bunch of little commit messages to get rid of all that clutter. Combine it into 1 or fewer commits. 
+
++ [http://blog.steveklabnik.com/posts/2012-11-08-how-to-squash-commits-in-a-github-pull-request](http://blog.steveklabnik.com/posts/2012-11-08-how-to-squash-commits-in-a-github-pull-request) 
+
++ [http://git-scm.com/book/en/Git-Tools-Rewriting-History](http://git-scm.com/book/en/Git-Tools-Rewriting-History)
+
