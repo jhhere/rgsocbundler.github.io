@@ -1,0 +1,38 @@
+---
+title: Week 6 Day 29 Partially Squish Squashed
+date: 2013-08-23 18:43 PDT
+tags: log
+---
+# Week 6 Day 29
+
+#### Friday, August 23, 2013
+
+## Partially Squish Squashed
+
+### Jen' Friday
+
+I read about Rspec and spent the rest of day wrapping up the FAQ page. I worked on doing my first commit squash and I ran into problem after problem with git which Andre walked me through.
+
+These are the basic commands:
+
+    $ git checkout master 
+
+    $ git pull upstream master 
+
+    $ git checkout faqpage 
+
+    $ git rebase -i master
+
+Successfully rebased and updated refs/heads/master.  
+
+**Change the word "pick" to "s"** Then run:
+
+    $ git push -f origin faqpage
+
+[and here's a link to the rest of the directions.](https://gist.github.com/jendiamond/6325286#file-gistfile1-md)
+
+### Joyce's Friday
+
+Received suggestions on how to improve the Rake task to build the issues page and made changes to it. There was a 4 to the right of the Bundler logo, which makes the the logo unclickable. I don’t know where it is coming from. I created a partial to embed it to another page and the 4 disappeared. shrugs. The page looks pretty good, except for the code block. :-/ Fixed it in the CSS. Then, updated the “Report a bug” link on the sidebar to this page and moved the partial to the correct directory. Got the code block and inline code style to match with the rest of website.
+
+Squashed the sidebar button fix for Firefox and submitted PR to bundler site. **The fix has been merged. Yay!**
