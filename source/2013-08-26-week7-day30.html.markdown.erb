@@ -1,0 +1,32 @@
+---
+title: Week 7 Day 30 Not Rationale Bug n' Rake
+date: 2013-08-26 17:10 PDT
+tags: log
+---
+
+# Week 7 Day 30
+
+## Not Rationale Bug n' Rake
+
+### Jen's Monday
+I broke up parts of the rationale page and combined them into other pages instead of adding them on the get started page
+
+per Andre's requests:
+Grouping - The section about "groups" should be merged with the page that is linked as "Grouping" in the sidebar.
+
+**Set Up** - The section about "set up your application to use bundler" should be merged with the Bundler.setup page.
+
+**Sharing** - The "check your code into version control" and "share your application with other developers" should be put into a new page named "Sharing" and linked in the sidebar Usage section.
+
+**Updating Gem** - The "updating a dependency" and "updating a gem without modifying the gemfile" sections should be put into a new page named "Updating gems" and linked in the sidebar in the Usage section.
+
+**Deploying** - The "deploying your application" section should be merged with the existing "deploying" page that is linked in the sidebar.
+
+### Joyce's Monday
+The Report a bug page is generated from the issues.md file placed in the source directory. The bug is the markdown file does not render to html correctly. The number `4` shows up to the right of the Bundler logo and makes the logo link not clickable. This is weird. We spent time trying to fix the `4`. Andre realized that `4` is the id of nil and then found that the markdown file can’t render `link_to` with blocks. He fixed it in the layout.haml. Now I don’t need to put the issues.md in a partial to have the page render correctly.
+
+The `:issues` task was included before the `:build` task that way it gets a copy of the latest issues.md file before deploying. Also, the source/issues.md was added to `.gitignore` so that the build artifacts from the bundler repo is not in the bundler-site repo.
+
+The report a bug page generated from the ISSUES.md of the bundler repo was squashed and submitted the PR to bundler repo.
+
+Started reading about some more [git commands](http://git-scm.com/2011/07/11/reset.html): git clean, git reset
