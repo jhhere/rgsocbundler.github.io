@@ -1,0 +1,99 @@
+---
+title: Week 7 Day 32 Recreating Bundler Issue
+date: 2013-08-28 18:57 PDT
+tags: log
+---
+
+# Week 7 Day 32
+
+## Recreating Bundler Issue
+
+### Jen's Wednesday
+I was looking at the issue again and I noticed a link at the bottom of the page. It went to and [older issue.](https://github.com/bundler/bundler/issues/1915)
+
+####'bundle outdated' gives success incorrectly
+
+No milestone No one is assigned With bundler-1.2.0.pre installed, I run "bundle outdated gemname-with-typo" — misleadingly it reports success, I think because my bundle is technically up-to-date, since is not actually a gem.
+
+    Fetching gem metadata from http://rubygems.org/........
+    Fetching gem metadata from http://rubygems.org/..
+
+    Outdated gems included in the bundle:
+    Your bundle is up to date
+    An error message like "gemname-with-typo not found" instead would be greatly clarifying.
+
+####Re-creating the Error
+
+adelcambre's suggested that I make a directory with a Gemfile and run bundle outdated and see what happens when you specify a gem in the Gemfile, vs one that isn't.
+
+####Andy's test looked like this:
+
+    $ mkdir test_outdated
+    $ cd test_outdated
+    $ vi Gemfile
+    $ bundle
+      Fetching gem metadata from https://rubygems.org/..
+      Resolving dependencies...
+      Using rake (10.1.0)
+      Using bundler (1.3.5)
+      Your bundle is complete!
+      Use `bundle show [gemname]` to see where a bundled gem is installed.
+    $ bundle outdated rake
+      Fetching gem metadata from https://rubygems.org/..
+      Resolving dependencies...
+
+      Your bundle is up to date!
+      ...
+**He notes**: One gem in the gemfile (rake), bundle outdated rake and bundle outdated rails look exactly the same even though rake is there and rails isn't
+
+####My test looked like this:
+
+I ran $ bundle outdated serv to check the error because there is no serv gem listed in the Gemfile.
+
+$ bundle outdated serv
+  Fetching gem metadata from https://rubygems.org/..........
+  Fetching gem metadata from https://rubygems.org/..
+  Resolving dependencies...
+
+  Your bundle is up to date!
+
+$ bundle outdated rake
+  You have requested:
+  rake = 10.0.4
+
+  The bundle currently has rake locked at 10.1.0.
+  Try running `bundle update rake`
+So yes it worked, I re-created the error or in this case the lack there of.
+
+I took a break to deal with my land-lord and my broken sink and leaking toilet. I returned to find that Jessica had made comments on all my pull requests so I started doing 8 corrections then squashed them all. I am feeling pretty comfortable with squashing and rebasing now. This time when everything went awry on one of the squashings I was able to figure out how to fix it on my own.
+
+### Joyce's Wednesday
+I brushed up on my Ruby by watching [videos](http://ruby-kickstart.com/).
+
+I setup Rspec test for the bundler feature I am adding. I am adding a better error message if the user is trying to update the gems from git, but they don’t have git installed on their computer.
+
+The Output:
+
+    /usr/local/Cellar/rbenv/0.4.0/libexec/rbenv: line 6: head: command not found
+    /usr/local/Cellar/rbenv/0.4.0/libexec/rbenv: line 6: rbenv: command not found
+    Updating git://github.com/square/cane.git
+    sh: git: command not found
+    Git error: command `git fetch --force --quiet --tags 'git://github.com/square/cane.git' "refs/heads/*:refs/heads/*"` in directory /Users/xavier/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/cache/bundler/git/cane-cf0b162855cb0919196ab923be218a839f69a0aa
+    has failed.
+    If this error persists you could try removing the cache directory '/Users/xavier/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/cache/bundler/git/cane-cf0b162855cb0919196ab923be218a839f69a0aa'
+
+I wrote my test based on [this example spec](https://github.com/bundler/bundler/blob/master/spec/update/git_spec.rb#L5-L22). I got the test to pass if I “removed” git from my computer.
+
+    describe "without git installed" do
+      it "prints a better error message" do
+
+        install_gemfile <<-G
+          git "#{lib_path('foo-1.0')}", :branch => "omg" do
+            gem 'foo'
+          end
+        G
+
+        bundle "update"
+        expect(out).to include("Git error")
+      end
+    end
