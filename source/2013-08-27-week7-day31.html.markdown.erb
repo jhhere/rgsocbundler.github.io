@@ -1,0 +1,139 @@
+---
+title: Week 7 Day 31 Bundler Features Phase 1
+date: 2013-08-27 13:05 PDT
+tags: log
+---
+# Week 7 Day 31
+
+## Bundler Features Phase 1
+
+### Tuesday Aug 28th
+
+### Joyce's Tuesday
+
+Yay! The report a bug page pulled in from the issues.md of the bundler repo got merged!
+
+Reviewed material on Gemfile, Rake, setting up alias, the bundler directory, thor in preparation on adding a bundler feature.
+
+Working on adding/fixing a bundler feature, got my system to reproduce the error by “removing” git.
+
+### Jen's Tuesday
+
+#### More Improvements and PRs (pull requests)
+
+I worked on some more improvements to the [bundler.io site](http://bundler.io/)
+I combined 3 things onto a new page called workflow instead of doing a get-sarted page.
++ 1. The top blurb.(the part under Bundler's Purpose and Rationale)
++ 2. A Simple Bundler Workflow from rationale page
++ 3. recommended workflow" at http://bundler.io/v1.3/bundle_update.htm
+
+I deleted two sections off of the index page; the block of links called Learn About and the block of links called Use Bundler with. They were all duplicated in the sidebar. 
+
+I created a new footer with links similar to what used to be at the top of the Bundler page; buttons for Get Started, Report a Bug, See What's New, Read Documentation, Discuss and Contribute and I added Bundler Workflow. 
+
+I also added the blurb from the rationale page to the top of the index page because it describes what Bundler does in more depth. Now there is nothing left on the rationale page that is not duplicated in other places once all my pull requests are excepted. 
+
+I moved the Devswag image and text to the sidebar and made some improvements to the text. So buying a Bundler t-shirt and stickers will hopefully be more appealing.
+
+### bundler-features
+
+Joyce and I both started on a bundler-feature that had a small tag on it. Andre helped pick one for each of us.
+
+#### bundle outdated should return non-zero success code for invalid gem name
+
+ Andre said that the code to check if the gem name is valid is something like:
+    if Bundler.definifion.specs.search(gemname).empty?
+    # not a valid gem name, you should raise a Bundler::GemNotFound error 
+    with a message like "#{gemname} isn't a gem in your bundle, so it can't be updated"
+    end
+
+I asked if I should I change this?
+
+    if gems.empty? && sources.empty?
+        # We're doing a full update
+        definition = Bundler.definition(true)
+      else
+        definition = Bundler.definition(:gems => gems, :sources => sources)
+    end
+    options["local"] ? definition.resolve_with_cache! : definition.resolve_remotely!
+
+Andre replied: oh hmm I guess I was wrong. You will probably need to rescue the error that is raised by that code
+if the gem doesn't exist.
+
+#### Looking for the files
+
+Using `$ grep -f "outdated" .` I found all the file that outdated is used in.
+    CHANGELOG
+    man/bundle.ronn
+    lib/bundler/man/bundle.txt
+    lib/bundler/man/bundle
+    lib/bundler/runtime.rb
+    lib/bundler/cli.rb
+    spec/other/platform_spec.rb
+    spec/other/outdated_spec.rb
+-------------------------------------
+
+#### Trying to re-create the error
+
+I made a file based on the file in the [bundler-features issue 6.](https://github.com/bundler/bundler-features/issues/6)
+It states that the following code should exit 0.
+
+    #!/bin/bash
+
+    set -ex
+
+    mkdir -p /tmp/bf-issue-6
+    cd /tmp/bf-issue-6
+
+    cat > Gemfile <<EOF
+    source "https://rubygems.org"
+    EOF
+
+    bundle
+    ! bundle outdated blurgh || (echo "failed" && exit 1)
+
+I created the file on my desktop, named it zero and ran it. This is what I saw.
+
+    **$ chmod +x zero
+    $ ./zero
+    + mkdir -p /tmp/bf-issue-6
+    + cd /tmp/bf-issue-6
+    + cat
+    + bundle
+    The Gemfile specifies no dependencies
+    Resolving dependencies...
+    Your bundle is complete!
+    Use `bundle show [gemname]` to see where a bundled gem is installed.
+    + bundle outdated blurgh
+    Fetching gem metadata from https://rubygems.org/.
+    Resolving dependencies...
+
+    Your bundle is up to date!
+    + echo failed
+    failed
+    + exit 1
+
+    $ echo $?
+    1
+
+I changed the exit code to 0 and ran it again. This is what I saw. The command `$ echo $?` shows what the last program exited as.
+
+    $ ./zero
+    + mkdir -p /tmp/bf-issue-6
+    + cd /tmp/bf-issue-6
+    + cat
+    + bundle
+    The Gemfile specifies no dependencies
+    Your bundle is complete!
+    Use `bundle show [gemname]` to see where a bundled gem is installed.
+    + bundle outdated blurgh
+    Fetching gem metadata from https://rubygems.org/.
+    Resolving dependencies...
+
+    Your bundle is up to date!
+    + echo failed
+    failed
+    + exit 0
+    $ echo $?
+    0
+
