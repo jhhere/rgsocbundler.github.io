@@ -1,0 +1,26 @@
+---
+title: Week 7 Day 34 It's Optimize Friday
+date: 2013-08-30 18:48 PDT
+tags: log
+---
+
+# Week 7 Day 34
+
+## It's Optimize Friday
+
+<iframe width="560" height="315" src="//www.youtube.com/embed/kfVsfOSbJY0" frameborder="0" allowfullscreen></iframe>
+
+### Jen's Friday
+
+### Joyce's Friday
+Started looking at another bundler feature/issue. The feature I am looking to add is when you `bundle update`, it shows the old version of the gem being updated. I started a rspec test for it.
+
+I received feedback and suggestions for my first addition/fix to the Bundler repo. I made improvements to it based on the comment I received. I made a method to store `Bundler.which(“git”)` in an instance variable inside bundler.rb. According to mentor Andre, we store it in an instance variable so we only have to look for git once. Instead of having to keep looking for git again and again repeatedly. This technique is called “"memoization."
+
+Original:
+
+    raise GitError, “Git is not installed!” if !Bundler.which(“git”)
+
+Improved:
+
+    raise GitError, "Git is not installed!" if !Bundler.git_present?
