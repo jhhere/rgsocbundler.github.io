@@ -1,0 +1,64 @@
+---
+title: Week 7 Day 33 Rebasing & Windows Issues
+date: 2013-08-29 19:02 PDT
+tags: log
+---
+# Week 7 Day 33
+Thursday, August 29 2013
+
+## Rebasing & Windows Issues
+
+### Joyce's Thursday
+
+After seeing that my test fails and passes from yesterday, I changed the include string to what 
+the better error message could be.
+
+    describe "without git installed" do
+    it "prints a better error message" do
+
+    install_gemfile <<-G
+      git "#{lib_path('foo-1.0')}", :branch => "omg" do
+        gem 'foo'
+      end
+    G
+
+    bundle "update"
+    expect(out).to include("Git is not installed!")
+  end
+end
+
+Read some more and got the message to print when bundle update was ran without git installed.
+
+    raise GitError, "Git is not installed!" if !Bundler.which("git")
+
+This issue was particularly for Windows when the user tries to bundle install. I had moved to an old Mac to make learning web development easier. Now back to Windows. I then setup my Windows and tested it on my Windows.
+
+
+### Jen's Thursday
+
+I spent the day going through the messages on all the PR I have out. Fixing, squashing, rebasing.
+
+I spent a lot of time reading about and changing the sass files. I was trying to get the footer to do something particular. It didn't work quite right but I think it still looks good. At least now I know more about sass. It does look a lot cleaner than css. I added a lower nav bar that I hope gets approved.
+
+I showed the people at the Meetup group how to squash commits. We researched rebasing vs. merging. **[This is the answer I found on Stack Overflow by Rob Di Marco](http://stackoverflow.com/questions/804115/git-rebase-vs-git-merge)**
+
+**Short Version**
+
++ Merge takes all the changes in one branch and merge them into another branch in one commit.
++ Rebase says I want the point at which I branched to move to a new starting point
+So when do you use either one?
+
+**Merge**
+
++ Let's say you have created a branch for the purpose of developing 
+a single feature. When you want to bring those changes back to master, 
+you probably want merge (you don't care about maintaining all of 
+the interim commits).
+
+**Rebase**
+
++ A second scenario would be if you started doing some development and 
+then another developer made an unrelated change. You probably want to 
+pull and then rebase to base your changes from the current version 
+from the repo.
+
