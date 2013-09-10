@@ -1,0 +1,33 @@
+---
+title: Week 8 Day 38 Gem Features
+date: 2013-09-09 13:15 PDT
+tags: log
+---
+
+# Week 8 Day 38
+
+## Gem Features
+
+### Jen's Friday
+I worked on finalizing all my pull requests. Almost all of them were merged including the invalid gemname issue on the actual bundler site. WOOOO!
+
+### Joyce's Friday
+Installed ctags to make it easier to navigate/jump between code in a text editor.
+
+Installed the debugger gem, required it in our file, `lib/source/rubygems.rb`, and added the word `debugger` on the line where you want to check out what the code is doing. It is similar to irb. We added it in line 71 of `lib/bundler/source/rubygems.rb`
+
+We looked at where the old version of the gem should be added. For example, the `was (2.3.5)` part of the message should go in the “Using” and the “Installing” messages.
+
+`locked_spec` - references the gemfile gems with the gem in the lockfile.
+
+`locked_spec_version` - stores the gem version from the gemfile.lock if the locked_spec matches
+
+Stored the original message, “Using #{spec.name} (#{spec.version})”, in the variable `using_message`.
+
+We only want to add the old version if the version of the gem is not the same as the one in the gemfile.lock (lockfile)
+
+So, we append the old_version to our “Using” and “Installing” message if that is true.
+
+Had to remove the debugger from our file so Rspec at least runs.
+
+Adding our code, broke the `spec/install/gemspec_spec.rb` and `spec/update/gems_spec.rb` Rspec tests because it can’t find a lockfile?
