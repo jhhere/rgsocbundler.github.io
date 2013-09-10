@@ -1,0 +1,37 @@
+---
+title: Week 8 Day 35 We Have Issues
+date: 2013-09-04 15:25 PDT
+tags: log
+---
+
+# Week 8 Day 35
+
+## We Have Issues
+
+### Joyce's Tuesday
+
+Learned to set the path to blank for rspec test, that way it can’t find 
+git. Before, I manually “removed” git to get the test to pass.
+
+Wrote the rspec test based on spec/update/ directory and separated into 
+3 files based on if the gem source is from rubygems, git, or path. 
+I haven’t gotten the rspec to pass yet though.
+
+Andre gave the method to display the old gem version, which I added 
+in to the lib/bundler/source/rubygems.rb.
+
+### Jen's Tuesday
+
+It seemed like a Monday because of the Labor holiday. I re-did all my 
+pull requests from scratch so they would contain only the changes I 
+made with the changes from the pull upstream master. I was getting 
+confused that the FAQ page kept coming back into the branches that 
+I was working on. I thought that maybe I had made the other branches 
+from the FAQ branch. 
+
+This is what was actually happening: even though it has not been 
+published the FAQ page has been merged into the master repo so when 
+I did a `git pull -i upstream master` the FAQ page is included into my 
+files and that it supposed to be happening and it is not supposed to be deleted.
+
+After fixing all the PRs I started another issue in the bundler-feature area. #6 
