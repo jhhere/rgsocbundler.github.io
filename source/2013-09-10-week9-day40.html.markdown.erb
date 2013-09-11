@@ -1,0 +1,46 @@
+---
+title: Week 9 Day 40 Games and Tests
+date: 2013-09-10 12:34 PDT
+tags: log
+---
+
+# Week 9 Day 40
+
+## Games and Tests
+
+### Jen's Tuesday
+Talked to the Rails Girls group about the game that the organizers posted so we would all talk. We tried to match the images we were given to another group who had the same image.
+
+The brilliant Oana Sipos wrote: Let's try a more geeky way of finding out the match: md5 checksum.
+
+The md5sum for my picture is the following one: f41d19dbdf199563085bea02227a15d2
+
+I use Ubuntu and with a single line in terminal, I got the checksum.
+
+It was really great talking with the Rails Girls from around the world.
+
+### Joyce's Tuesday
+
+Broke the previous tests that were passing in `spec/install/gemspec_spec.rb` and `spec/update/gems_spec.rb`. One of the errors I got was a nil error from the update spec and below is another example of a error.
+
+    1) bundle install from an existing gemspec when child gemspecs conflict with a released gemspec should install the child gemspec's deps
+     Failure/Error: should_be_installed "rack 1.0"
+
+       expected: #<Gem::Version "1.0">
+            got: #<Gem::Version "">
+
+       (compared using ==)
+
+       Diff:
+       @@ -1,2 +1,2 @@
+       -Gem::Version.new("1.0")
+       +Gem::Version.new("")
+
+     # ./spec/support/matchers.rb:38:in `block in should_be_installed'
+     # ./spec/support/matchers.rb:33:in `each'
+     # ./spec/support/matchers.rb:33:in `should_be_installed'
+     # ./spec/install/gemspec_spec.rb:166:in `block (3 levels) in <top (required)>'
+
+I changed the code in `source/rubygems.rb` to check if there is a lockfile and the tests passes again. Worked on getting my Rspec test to pass when the user runs bundle update from rubygems it also displays the old gem version.
+
+Now I also want the old version to display when run bundle update with the source coming from git and path. Worked on the Rspec test for git and path. Added the code to the git and path file in the source directory. Hooray got all of them to pass! and everything is green now.
