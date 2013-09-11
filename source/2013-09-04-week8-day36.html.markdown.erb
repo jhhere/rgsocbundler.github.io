@@ -1,0 +1,41 @@
+---
+title: Week 8 Day 36 Thinking through Wednesday
+date: 2013-09-04 17:10 PDT
+tags: log
+---
+
+# Week 8 Day 36
+
+## Thinking through Wednesday
+
+### Jen's Wednesday
+Met with Jessica at Pivotal Labs. We checked out the issue I am working on about returning a message when the gem name is invalid. We wrote a test for it and realized that my rspec wasn't working with the bundler files. Jessica, then Steve, then Lars tried a bunch of different things to make it work. In the end the only solution was to re-install my computer.
+
+When my computer was re-installed my test passed.
+
+When I was using Middleman earlier I was working in a branch. I signed back into it and I got this message:
+
+    $ git checkout invalid_gemname
+      M Rakefile
+      M bin/bundle_ruby
+      M lib/bundler/templates/Executable
+      M spec/bundler/dsl_spec.rb
+      Switched to branch 'invalid_gemname'
+
+[http://stackoverflow.com/questions/4949652/git-checkout-what-does-this-weird-output-mean](http://stackoverflow.com/questions/4949652/git-checkout-what-does-this-weird-output-mean) (I figured that it was something like this but this is much clearer than what i was thinking.)
+
+That's the output of git status; git is showing you that after checking out master there are still uncommited changes to your working copy (one modified file and one deleted file).
+
+Check man git-status:
+
+    M = modified
+    A = added
+    D = deleted
+    R = renamed
+    C = copied
+    U = updated but unmerged
+
+### Joyce's Wednesday
+Worked on displaying the old version of the gem when bundle update gets run. The initial code added and tested with `dbundle update` works to display the old version of the gem. But even if the gem did not update to a newer version, it displays the same version as the old version.
+
+Working on getting the rspec to pass. It isn’t working. There might be a bug?
