@@ -1,0 +1,32 @@
+---
+title: Week 9 Day 42 ~Special~
+date: 2013-09-12 11:44 PDT
+tags: log
+---
+
+# Week 9 Day 42
+
+## ~special~
+
+### Jen's Thursday
+
+### Joyce's Thursday
+Learned/Read about the object `nil` and the `defined?` method.
+
+The `nil` and `false` object are the only values that evaluates to false.
+
+**`nil` is a ~special~ object.**
+
+**The `defined?` method is a ~special~ operator.**
+
+But, when you set a variable to nil and send it as an argument to defined? it returns what the object/variable is.
+
+You can give defined? an argument or any random thing and it works. We didn’t set @foo to anything and gave it to the defined? method and it still returns something, `nil`. Next, we set @foo = nil. Give it to defined? method and it tells us it is an “instance-variable.”
+
+    >> defined?(@foo)
+    => nil
+    >> @foo = nil
+    => nil
+    >> defined?(@foo)
+    => "instance-variable"
+
