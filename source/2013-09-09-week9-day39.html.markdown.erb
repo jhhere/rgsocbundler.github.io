@@ -1,0 +1,95 @@
+---
+title: Week 9 Day 39 Fixer Uppers
+date: 2013-09-09 13:15 PDT
+tags: log
+---
+
+# Week 9 Day 39
+
+## Fixer Uppers
+
+### Joyce's Monday
+
+I received comments on my first Bundler feature pull request. My first Bundler 
+feature pull request was on printing a better error message to let the user know 
+that they need to install Git if they are trying to grab the gems from git repositories.
+
+I removed some unnecessary blank lines and changed the error message to be more 
+useful. Updated rspec test to create a git repository and updated the test to 
+match the more useful error message in git_proxy.rb.
+
+I also reviewed what I had worked on on Friday and what was git merge vs. rebase.
+
+### Jen's Monday
+
+####  same_gem_twice_boo
+
+**`$ echo $?`** gives you the exit code of the last command that was run
+
+**`$ :w !ruby -c`** check your ruby code in gvim to make sure it is all good ruby
+
+line 1129
+    spec/other/platform_spec "bundle outdated"
+
+      context "bundle outdated" do
+        before do
+          build_repo2 do
+            build_git "foo", :path => lib_path("foo")
+          end
+
+          install_gemfile <<-G
+            source "file://#{gem_repo2}"
+            gem "activesupport", "2.3.5"
+            gem "foo", :git => "#{lib_path('foo')}"
+          G
+        end
+__________________________________
+from last Tuesday
+https://bundler.campfirenow.com/room/566068/transcript/2013/09/03
+
+rspec spec/bundler/dsl_spec.rb:63
+
+    describe "syntax errors" do
+      it "will raise a Bundler::GemfileError" do
+        gemfile "gem 'foo', :path => /unquoted/string/syntax/error"
+        expect { Bundler::Dsl.evaluate(bundled_app("Gemfile"), nil, true) }.
+          to raise_error(Bundler::GemfileError)
+      end
+    end
+
+    describe '#gem' do
+      it "will raise an Error if the gem is duplicated" do
+        gemfile """
+          source 'https://rubygems.org'
+            gem 'rails', '~> 4.0.0'
+            gem 'rails', '~> 4.0.0'
+            """
+        expect { Bundler::Dsl.evaluate(bundled_app("Gemfile"), nil, true) }.
+          to raise_error(Bundler::GemfileError)
+      end
+
+______________________________________
+
+lib/bundler/dsl.rb
+
+def gem
+_________________________________
+
+When I get use this code in `lib/bundler/dsl.rb` line78
+
+    # duplication of same exact gem, same version too 
+      if gem(name, *args)
+        gemfile <<-G
+          gem 'rails', '~> 4.0.0'
+          gem 'rails', '~> 4.0.0'
+          G
+          raise GemfileError, "Gem #{name.to_s} is duplicated in your Gemfile. Please delete one."
+      end
+
+I get this error
+
+    $  dbundle outdated jen
+    Unfortunately, a fatal error has occurred. Please see the Bundler
+    troubleshooting documentation at http://bit.ly/bundler-issues. Thanks!
+    /home/jen/Desktop/railsgirls/bundler/lib/bundler/friendly_errors.rb:40: stack level 
+     too deep (SystemStackError)
