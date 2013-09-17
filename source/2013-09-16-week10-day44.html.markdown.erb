@@ -1,0 +1,29 @@
+---
+title: Week 10 Day 44 Testing & Committing
+date: 2013-09-16 11:50 PDT
+tags: log
+---
+
+# Week 10 Day 44
+
+## Testing & Committing
+
+### Jen's Monday
+My new test for the warning that you have multiple gems. I forgot that you have to run the command in the test so it will see the error. That is what `bundle :install` is doing in there.
+
+    describe "#gem" do
+        it "will display a Warning if the gem is duplicated" do
+          gemfile <<-G
+          gem 'rails', '~> 4.0.0'
+          gem 'rails', '~> 4.0.0'
+          G
+
+          bundle :install
+          expect(out).to include("You specified:")
+        end
+    end
+
+### Joyce's Monday
+I worked on writing better [commit messages](http://rakeroutes.com/blog/deliberate-git/) by reading and watching about `git rebase -i` and editing [a pull request](https://github.com/RGSoCBundler/bundler/pull/6) I have open. Previously, I had learned about squashing commits. Now, I worked on writing shorter messages and adding the issues link on the second line by using the reword command when typing the `git rebase -i [commit's hash].
+
+Also read about WIP commits while coding, which I will have to keep in mind now.
