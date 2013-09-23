@@ -1,0 +1,35 @@
+---
+title: Week 10 Day 48 Friday
+date: 2013-09-20 15:04 PDT
+tags: log
+---
+
+# Week 10 Day 48
+
+## Friday
+
+### Jen's Friday
+I researched and reviewed the workshops and presentations for the conference I am attending next week, [Rock Mountain Ruby in Boulder](http://rockymtnruby.com/), Colorado. This conference wasn't on the RGSOC list but I found it and noticed that they were offering a scholarship for a free ticket and a guide for the conference. I applied and I won it!
+
+There are going to be around eight speakers a day and there workshops on the first day. I am very excited to take the workshop on [Git and Github](http://rockymtnruby.com/workshops#workshop_3). and the [Arduino workshop](http://rockymtnruby.com/workshops#workshop_6). I am also very excited to see one of the people who has been helping us this summer, Andy Delcambre, speak about Ruby Systems and Katrina Owens speak on refactoring.
+
+This is the first Rubycentric conference I will have attended. I hope to learn a lot, meet some more fellow Rubyists and get inspired to keep on coding long past the RGSOC.
+
+I also worked on getting caught up with my blogging.
+
+### Joyce's Friday
+
+I fixed the last bit of the `bundle update` rspec test that I missed, squashed down all the commits, and rewrote the commits using `git rebase -i`.
+
+The submitted PR to show the previous version of the gem had some discussion comments. I learned what “promote that check to block level” means. I changed this bit from:
+
+    old_version = " was (#{locked_spec_version})"
+    message << old_version if locked_spec_version && spec.version != locked_spec_version
+
+to this:
+
+    if locked_spec_version && spec.version != locked_spec_version
+      message << " (was #{locked_spec_version})"
+    end
+
+During the discussion they threw out some ideas on how to format the message. I changed to what was suggested and changed the rspec for that to match.
